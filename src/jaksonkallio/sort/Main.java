@@ -19,15 +19,16 @@ class Main {
 		int[] sample_input = genSampleInput(SAMPLE_ELEMENT_COUNT);
 		List<SortingAlgorithm> algos = getAlgorithms();
 
-		System.out.println("Running tests...");
+		System.out.println("Algorithm count: " + algos.size());
+		System.out.println("Sample array size: " + sample_input.length);
+		System.out.println("Sample element range: 0-" + SAMPLE_ELEMENT_MAX_VAL);
+		System.out.println("Sample generation seed: " + SAMPLE_INPUT_SEED);
 
 		for(int i = 0; i < algos.size(); i++){
 			SortingAlgorithm algo = algos.get(i);
-			int[] sorted = new int[SAMPLE_ELEMENT_COUNT];
 
 			long bench_start = System.currentTimeMillis();
-			sorted = algo.sort(sample_input);
-			displayArray(sorted);
+			algo.sort(sample_input);
 			long bench_end = System.currentTimeMillis();
 
 			System.out.println(algo.getName() + " performed sort in " + (bench_end - bench_start) + "ms");
@@ -62,7 +63,7 @@ class Main {
 	private int[] genSampleInput(int elements){
 		int[] sample_input = new int[elements];
 		for(int i = 0; i < sample_input.length; i++){
-			sample_input[i] = Math.abs(sample_input_gen.nextInt());
+			sample_input[i] = Math.abs((int)(sample_input_gen.nextDouble() * (SAMPLE_ELEMENT_MAX_VAL + 1)));
 		}
 
 		return sample_input;
@@ -70,6 +71,7 @@ class Main {
 
 	public static final long SAMPLE_INPUT_SEED = 100;
 	public static final int SAMPLE_ELEMENT_COUNT = 10;
+	public static final int SAMPLE_ELEMENT_MAX_VAL = 1000;
 
 	private final Random sample_input_gen;
 }
