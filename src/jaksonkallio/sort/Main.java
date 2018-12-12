@@ -23,6 +23,7 @@ class Main {
 		System.out.println("Sample array size: " + sample_input.length);
 		System.out.println("Sample element range: 0-" + SAMPLE_ELEMENT_MAX_VAL);
 		System.out.println("Sample generation seed: " + SAMPLE_INPUT_SEED);
+		System.out.println("");
 
 		for(int i = 0; i < algos.size(); i++){
 			SortingAlgorithm algo = algos.get(i);
@@ -31,9 +32,10 @@ class Main {
 			algo.sort(sample_input);
 			long bench_end = System.currentTimeMillis();
 
-			System.out.println(algo.getName() + " performed sort in " + (bench_end - bench_start) + "ms");
+			System.out.println((i + 1) + ": " + algo.getName() + " performed sort in " + (bench_end - bench_start) + "ms");
 		}
 
+		System.out.println("");
 		System.out.println("Tests complete");
 	}
 
