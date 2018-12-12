@@ -49,7 +49,7 @@ public class MergeSort extends SortingAlgorithm {
 		}
 
 		while(j < right.length){
-			arr[merge_current] = left[j];
+			arr[merge_current] = right[j];
 			j++;
 			merge_current++;
 		}
